@@ -1,118 +1,111 @@
 /**
  * A class that can be used to create cards.
  * 
- * @author Stuart Thomson pi C6660723
- * @date 09/12/15
- * @version 1.0
+ * @author Stuart Thomson 
+ * @date 03/02/16
+ * @version 2.0
  */
-import java.util.ArrayList;
-import java.util.List;
 public class Card
 {
-   private List <String> ranks;
-   private List <String> suits;
+   private int ranks = 0;
+   private int suits = 0;
    /**
-    * Constructers of class Card
+    * Constructor of class Card 
+    * takes an int for ranks and suit
+    * @param int aRank a value for the rank
+    * @param int aSuit a value for the suit
     */
-   public Card ()
+   public Card (int aRank , int aSuit)
    {
-       ranks = new ArrayList<String> ();
-       suits = new ArrayList<String> ();
+       this.ranks = aRank;
+       this.suits = aSuit;
    }
    
    /** 
-    * Method to create ranks as a List of Strings.
+    * Method to set rank as value
+    * @param int aRank a value for the rank
     */
-   private void setRanks()
+   public void setRanks(int aRank)
    {
-      this.ranks.add ("Ace");
-      this.ranks.add ("Two");
-      this.ranks.add ("Three");
-      this.ranks.add ("Four");
-      this.ranks.add ("Five");
-      this.ranks.add ("Six");
-      this.ranks.add ("Seven");
-      this.ranks.add ("Eight");
-      this.ranks.add ("Nine");
-      this.ranks.add ("Ten");
-      this.ranks.add ("Jack");
-      this.ranks.add ("Queen");
-      this.ranks.add ("King");
+      this.ranks = aRank;
    }
    
    /** 
-    *Method to create suits as a List of Strings.
+    *Method to set suit as a value
+    * @param int aSuit a value for the suit
     */
-   private void setSuits ()
+   public void setSuits (int aSuit)
    {
-      this.suits.add ("Spades");
-      this.suits.add ("Diamonds");
-      this.suits.add ("Clubs");
-      this.suits.add ("Hearts");
+      this.suits = aSuit;
    }
    
    /** 
-    * This will return a string representation of the rank
-    * at a given point in the List
-    * the list remains unchanged.
+    * This will return the rank as a number
+    * @return the value for the rank 
     */
-   public String getRank (int x)
+   public int getRank ()
    {
-     return this.ranks.get(x); 
+     return this.ranks; 
+   }
+   
+   /** 
+    * This will return the rank as a string
+    * @return a string representation of the Rank
+    */
+   public String getRankAsString (int aRank)
+   {
+      switch (aRank)
+      {
+         case 1:return("Ace");
+         case 2:return("Two");
+         case 3:return("Three");
+         case 4:return("Four");
+         case 5:return("Five");
+         case 6:return("Six");
+         case 7:return("Seven");
+         case 8:return("Eight");
+         case 9:return("Nine");
+         case 10:return("Ten");
+         case 11:return("Jack");
+         case 12:return("Queen");
+         case 13:return("King");
+         default: return("Invalid Rank");
+      }
    }
   
    /** 
-    * This will return a string representation of the suit,
-    * at a given point in the list.
-    * The list remains unchanged.
+    * This will return the suit of the receiver as an int
+    * @return the value of the Suit.
     */
-   public String getSuit (int x)
+   public int getSuit ()
    {
-      return this.suits.get(x); 
+      return this.suits; 
    }
    
-   /**
-    * Returns the size of the ranks list as an integer.
+    /** 
+    * This will return the suit of the receiver as an int
+    * @return a string representation of the Suit
     */
-   public int getSizeOfRanks()
+   public String getSuitAsString (int aSuit)
    {
-      return this.ranks.size();
-   }
-   
-    /**
-    * Returns the size of the suits list as an integer.
-    */
-   public int getSizeOfSuits()
-   {
-      return this.suits.size();
-   }
-   
-   /**
-    * Initializes the card with ranks and suits.
-    */
-   public void makeCards()
-   {
-     setSuits ();
-     setRanks ();
+      switch (aSuit)
+      {
+         case 1:return("Spades");
+         case 2:return("Diamonds");
+         case 3:return("Clubs");
+         case 4:return("Hearts");
+         default:return("Invalid Rank");
+      }
    }
    
    /**
     * Returns a string representation of the receiver.
+    * @return String representation of the card with rank and suit
     */
    @Override
    public String toString()
    {
-      String message = "An instance of Class " + this.getClass().getName()
-      + " it has " + this.getSizeOfRanks() + " ranks"
-      + " and " + getSizeOfSuits() + " suits ";
-      if (this.getSizeOfRanks() > 0 && this.getSizeOfSuits() > 0)
-      {
-         message = message + "\n" + this.getClass().getName() + " class has been set";
-      }
-      else
-      {
-         message = message + "\n" + this.getClass().getName() + " class is not set";
-      }
-      return message;
-   }  
+      return (this.getRankAsString(this.getRank()) +" of "
+               + this.getSuitAsString(this.getSuit()));
+   }
 }

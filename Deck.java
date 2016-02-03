@@ -3,53 +3,50 @@
  * The deck can be shuffled and cards can be dealt from the deck.
  * size of the deck will be reduced for every card dealt.
  * 
- * @author Stuart Thomson pi C6660723
- * @version 2
- * 10/12/15
+ * @author Stuart Thomson 
+ * @version 2.0
+ * 03/02/16
  */
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
-public class Deck
+public final class Deck
 {
-     private List <String> deckOfCards;
-     private Card cards;
-     private String beenShuffled;
+  final private ArrayList <Card> cardsInDeck;
+  private boolean beenShuffled;
   public Deck()
   {
-    this.cards = new Card();
-    this.cards.makeCards();
-    this.deckOfCards = new ArrayList <String> ();
-    beenShuffled = "";
+    this.cardsInDeck = new ArrayList <Card> ();
+    this.setDeckOfCards();
+    beenShuffled = false;
    }
    
    /**
     * A method to get cards from the Card class to 
-    * create an unshuffled Deck
+    * create an un-shuffled Deck
     */
   public void setDeckOfCards()
   {
-      int lengthOfSuits = cards.getSizeOfSuits();
-      int lengthOfRanks = cards.getSizeOfRanks();
-      int counter = 0;
-      for (int i = 0;i < lengthOfSuits; i++)
+      int lengthOfSuits = 4;
+      int lengthOfRanks = 13;
+      //Starts at one so the value matches 
+      for (int i = 1;i <= lengthOfSuits; i++)
       {
-         for(int x = 0;x <lengthOfRanks; x++)
+         for(int x = 1;x <= lengthOfRanks; x++)
          {
-            this.deckOfCards.add(cards.getRank(x) + " of " + this.cards.getSuit(i));
-            counter ++;
+            this.cardsInDeck.add(new Card (x ,i));
          }
       }
-      beenShuffled = "no";      
+      beenShuffled = false;      
    }
   
    /**
     * Returns the current size of the deck
+    * @return int
     */
   public int getSizeOfDeck()
   {
-     return this.deckOfCards.size();
+     return this.cardsInDeck.size();
    }
   
   /**
@@ -57,64 +54,71 @@ public class Deck
    */
   public void shuffelDeck()
   { 
-     if (!this.deckOfCards.isEmpty())
-     {
-        Collections.shuffle(this.deckOfCards);
-        beenShuffled = "yes";
-      }
-      else
-      {
-         System.out.println("Cant shuffle an empty deck");
-      }
-   }
+     Collections.shuffle(this.cardsInDeck);
+     beenShuffled = true;
+  }
   
   /** 
-   * Method to deal a card from the deck returns a string.
-   * The size of the deck is reduced by one. Deck must be shuffled.
+   * Method to deal a card from the deck returns a card.
+   * The size of the deck is reduced by one.
    */
-  public String dealCard()
+  private Card dealACard()
   {
-     if(!this.deckOfCards.isEmpty()&& beenShuffled == "yes")
-      {
-        return this.deckOfCards.remove(0);
-      }
-     else if (beenShuffled == "no")
-      {
-        return "Please shuffle the deck before dealing";
-      }
-     else
-      {
-        return "Cant deal from an empty deck";
-      }
-   }
+    return this.cardsInDeck.remove(0);
+  }
+  
+  /**
+   * Method to deal a card from the deck it will not deal a card 
+   * unless the deck has been shuffled.
+   */
+  public void dealCard()
+  {
+    if(!this.cardsInDeck.isEmpty()&& beenShuffled == true) 
+    {
+      this.dealACard();
+    }
+    else
+    {
+      System.out.println("Please shuffle the deck before dealing");
+    }
+  }
   
   /** 
    * A method to return the deck of cards.
    */
-  private List<String> getDeckOfCards()
+  private ArrayList<Card> getDeckOfCards()
   {
-     return this.deckOfCards;
+     return this.cardsInDeck;
    }
-   
+  
+  /**
+   * A method to print out the deck of cards.
+   * the deck remains unchanged.
+   */
+  public void printDeck()
+  {
+     for(Card aCard: this.getDeckOfCards())
+     {
+       System.out.println(aCard); 
+      }
+   }
+  
    /**
     * Returns a string representation of the object receiver.
+    * @return String
     */
   @Override
   public String toString()
    {
      String message = "An instance of Class " + this.getClass().getName()
      + " it has " + this.getSizeOfDeck() + " cards ";
-     if (beenShuffled == "no")
+     if (beenShuffled == false)
      {
         message = message + "\nThe deck has not been shuffled ";
       }
-     else if (beenShuffled == "yes")
+     else if (beenShuffled == true)
      {
         message = message + "\nThe deck has been shuffled ";
-      }
-     else
-      {
-         message = message + "\nThe deck has not been set ";
       }
       return message;
    }
