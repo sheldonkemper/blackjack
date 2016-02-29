@@ -7,15 +7,17 @@
  * @version 2.1
  * 26/02/16
  */
+package blackjack;
 
 import java.util.*;
+
 public final class Deck
 {
   final private List<Card> cardsInDeck;
   private boolean beenShuffled;
   public Deck()
   {
-    this.cardsInDeck = new ArrayList <Card> ();
+    this.cardsInDeck = new ArrayList<> ();
     this.setDeckOfCards();
     beenShuffled = false;
    }
@@ -96,10 +98,9 @@ public final class Deck
    */
   public void printDeck()
   {
-     for(Card aCard: this.getDeckOfCards())
-     {
-       System.out.println(aCard); 
-      }
+      this.getDeckOfCards().stream().forEach((aCard) -> {
+          System.out.println(aCard);
+      });
    }
   
    /**

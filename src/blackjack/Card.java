@@ -5,6 +5,8 @@
  * @date 26/02/16
  * @version 2.1
  */
+package blackjack;
+
 public class Card
 {
    private int ranks = 0;
