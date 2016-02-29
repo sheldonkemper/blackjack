@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016, Author
+ * Copyright (c) 2016, Sheldon Kemper
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,8 @@ package blackjack;
 
 /**
  *
- * @author sheld
+ * @author Sheldon Kemper
  */
-public class Hand {
+public class House {
     
 }
