@@ -7,15 +7,8 @@ package blackjack;
 
 /**
  *
- * @author Sheldon Kemper
+ * @author sheld
  */
-public interface Player {
-    
-    Hand getHand();
-    Hand setHand();
-    boolean clearHand();
-    void setPlayerName(String aName);
-    String getPlayerName();
-    
+public class Hand {
     
 }
