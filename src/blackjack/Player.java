@@ -1,11 +1,4 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package blackjack;
-
-/*
  * Copyright (c) 2016, Sheldon Kemper
  * All rights reserved.
  *
@@ -30,13 +23,17 @@ package blackjack;
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+package blackjack;
+
 public interface Player {
     
     Hand getHand();
     Hand setHand();
     boolean clearHand();
-    void setPlayerName(String aName);
+    boolean setPlayerName(String aName);
     String getPlayerName();
+    boolean hit();
+    boolean stand();
     
     
 }

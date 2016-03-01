@@ -27,7 +27,7 @@ package blackjack;
 
 /**
  *
- * @author sheld
+ * @author 
  */
 public class Hand {
     
