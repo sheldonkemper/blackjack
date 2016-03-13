@@ -25,10 +25,60 @@
  */
 package blackjack;
 
+import java.util.*;
 /**
  *
  * @author 
  */
 public class Hand {
+    
+    private List<Card> cardsInHand;
+   
+    
+    /**
+     * 
+     */
+    public Hand()
+    {
+        this.cardsInHand = new ArrayList<>();
+    }
+    
+    /**
+     * 
+     * @return Card cards in hand
+     */
+    public List getHand()
+    {
+        return this.cardsInHand;
+    }
+    
+    /**
+     * 
+     * @param newCard
+     */
+    public void setHand(Card newCard)
+    {
+        this.cardsInHand.add(newCard);
+    }
+    
+    /**
+     * 
+     */
+    public void clearHand()
+    {
+        this.cardsInHand.clear();
+    }
+    
+    /**
+    * Returns a string representation of the receiver.
+    * @return String representation of the hand with each card in it
+    */
+   @Override
+   public String toString()
+   {
+      return ("An instance of Class " + this.getClass().getName()
+     + " it has " + this.cardsInHand.size() + " cards ")
+              + this.cardsInHand ;
+   }
     
 }
